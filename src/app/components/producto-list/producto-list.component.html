@@ -58,7 +58,7 @@
           <td>${{ calcularGanancia(producto) | number:'1.2-2' }}</td>
           <td>
             {{ producto.existencias }}
-            <span *ngIf="producto.existencias <= producto.stockMinimo" title="Stock bajo" style="color: #c0392b; font-weight: bold;">⚠</span>
+            <span *ngIf="producto.existencias <= producto.stockMinimo" title="Stock bajo" class="low-stock-alert">⚠</span>
           </td>
           <td>{{ producto.activo ? 'Activo' : 'Inactivo' }}</td>
           <td class="actions-cell">
@@ -67,7 +67,7 @@
           </td>
         </tr>
         <tr *ngIf="productosFiltrados.length === 0">
-          <td colspan="9" style="text-align: center; padding: 20px;">No se encontraron productos.</td>
+          <td colspan="9" class="empty-state">No se encontraron productos.</td>
         </tr>
       </tbody>
     </table>

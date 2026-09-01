@@ -1,13 +1,5 @@
 # Registro de Productos e Inventario
 
-Actividad de Coworking: Versión 3 (Formularios Reactivos en Angular) + Roles y Autenticación.
-
-## Integrantes del Equipo
-- Integrante 1
-- Integrante 2
-- Integrante 3
-- Integrante 4 (Opcional)
-
 ## Descripción del Problema
 Una tienda necesita registrar sus productos y controlar las existencias disponibles. Esta aplicación permite validar los datos ingresados, calcular valores del inventario e identificar de forma visual los productos con pocas existencias (stock bajo). Adicionalmente, cuenta con un sistema de **Roles (Encargado y Cliente)** donde el encargado gestiona el inventario completo y el cliente tiene acceso a una tienda en línea para realizar simulaciones de compra (disminuyendo stock).
 
@@ -25,14 +17,6 @@ Una tienda necesita registrar sus productos y controlar las existencias disponib
 - **Formulario (Admin):** Construcción del `FormGroup`, campos, mensajes y validaciones.
 - **Listado y Tienda (Cliente):** Implementación de la visualización, filtros, compras ficticias, y operaciones CRUD.
 - **Diseño y Pruebas:** Estilos, casos de prueba, README y evidencias.
-
-## Ramas Utilizadas (Git Flow)
-- `main`
-- `develop`
-- `feature/autenticacion`
-- `feature/formulario`
-- `feature/listado`
-- `feature/estilos-pruebas`
 
 ## Casos de Prueba Ejecutados
 - Enviar el formulario vacío (muestra errores de campos obligatorios).
