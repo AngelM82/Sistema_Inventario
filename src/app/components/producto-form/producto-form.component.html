@@ -1,0 +1,117 @@
+<div class="card form-container">
+  <h2>{{ productoEdicion ? 'Editar Producto' : 'Registrar Producto' }}</h2>
+  <form [formGroup]="productoForm" (ngSubmit)="guardar()">
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="codigo">Código</label>
+        <input id="codigo" type="text" formControlName="codigo" [class.is-invalid]="f['codigo'].invalid && f['codigo'].touched">
+        <div class="error-msg" *ngIf="f['codigo'].invalid && f['codigo'].touched">
+          <span *ngIf="f['codigo'].errors?.['required']">El código es obligatorio.</span>
+          <span *ngIf="f['codigo'].errors?.['minlength']">Mínimo 4 caracteres.</span>
+          <span *ngIf="f['codigo'].errors?.['duplicado']">Este código ya existe.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" formControlName="nombre" [class.is-invalid]="f['nombre'].invalid && f['nombre'].touched">
+        <div class="error-msg" *ngIf="f['nombre'].invalid && f['nombre'].touched">
+          <span *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</span>
+          <span *ngIf="f['nombre'].errors?.['minlength']">Mínimo 3 caracteres.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" formControlName="categoria" [class.is-invalid]="f['categoria'].invalid && f['categoria'].touched">
+          <option value="">Seleccione...</option>
+          <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+        </select>
+        <div class="error-msg" *ngIf="f['categoria'].invalid && f['categoria'].touched">
+          Campo obligatorio.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="proveedor">Proveedor</label>
+        <input id="proveedor" type="text" formControlName="proveedor" [class.is-invalid]="f['proveedor'].invalid && f['proveedor'].touched">
+        <div class="error-msg" *ngIf="f['proveedor'].invalid && f['proveedor'].touched">
+          Campo obligatorio.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="precioCompra">Precio de Compra</label>
+        <input id="precioCompra" type="number" formControlName="precioCompra" [class.is-invalid]="f['precioCompra'].invalid && f['precioCompra'].touched">
+        <div class="error-msg" *ngIf="f['precioCompra'].invalid && f['precioCompra'].touched">
+          <span *ngIf="f['precioCompra'].errors?.['required']">Obligatorio.</span>
+          <span *ngIf="f['precioCompra'].errors?.['min']">Debe ser mayor que 0.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="precioVenta">Precio de Venta</label>
+        <input id="precioVenta" type="number" formControlName="precioVenta" [class.is-invalid]="(f['precioVenta'].invalid || productoForm.errors?.['precioVentaInvalido']) && f['precioVenta'].touched">
+        <div class="error-msg" *ngIf="(f['precioVenta'].invalid || productoForm.errors?.['precioVentaInvalido']) && f['precioVenta'].touched">
+          <span *ngIf="f['precioVenta'].errors?.['required']">Obligatorio.</span>
+          <span *ngIf="productoForm.errors?.['precioVentaInvalido']">Debe ser mayor al precio de compra.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="existencias">Existencias</label>
+        <input id="existencias" type="number" formControlName="existencias" [class.is-invalid]="f['existencias'].invalid && f['existencias'].touched">
+        <div class="error-msg" *ngIf="f['existencias'].invalid && f['existencias'].touched">
+          <span *ngIf="f['existencias'].errors?.['required']">Obligatorio.</span>
+          <span *ngIf="f['existencias'].errors?.['min']">Mínimo 0.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="stockMinimo">Stock Mínimo</label>
+        <input id="stockMinimo" type="number" formControlName="stockMinimo" [class.is-invalid]="f['stockMinimo'].invalid && f['stockMinimo'].touched">
+        <div class="error-msg" *ngIf="f['stockMinimo'].invalid && f['stockMinimo'].touched">
+          <span *ngIf="f['stockMinimo'].errors?.['required']">Obligatorio.</span>
+          <span *ngIf="f['stockMinimo'].errors?.['min']">Mínimo 1.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fechaIngreso">Fecha de Ingreso</label>
+        <input id="fechaIngreso" type="date" formControlName="fechaIngreso" [class.is-invalid]="f['fechaIngreso'].invalid && f['fechaIngreso'].touched">
+        <div class="error-msg" *ngIf="f['fechaIngreso'].invalid && f['fechaIngreso'].touched">
+          Obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" formControlName="activo">
+          Producto Activo
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" rows="3" [class.is-invalid]="f['descripcion'].invalid && f['descripcion'].touched"></textarea>
+      <div class="char-count" [class.text-danger]="descripcionLength > 250">
+        {{ descripcionLength }} / 250
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" *ngIf="productoEdicion" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">{{ productoEdicion ? 'Actualizar' : 'Guardar' }}</button>
+    </div>
+  </form>
+</div>
