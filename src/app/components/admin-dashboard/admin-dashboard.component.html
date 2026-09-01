@@ -1,0 +1,18 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h2>Panel de Administrador - Gestión de Inventario</h2>
+  </div>
+  
+  <app-producto-form 
+    [productoEdicion]="productoEnEdicion" 
+    [codigosExistentes]="codigosExistentes"
+    (onSubmitProducto)="manejarSubmit($event)"
+    (onCancel)="cancelarEdicion()">
+  </app-producto-form>
+  
+  <app-producto-list 
+    [productos]="productos"
+    (onEdit)="iniciarEdicion($event)"
+    (onDelete)="eliminarProducto($event)">
+  </app-producto-list>
+</div>

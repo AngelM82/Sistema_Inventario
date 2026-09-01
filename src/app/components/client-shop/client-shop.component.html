@@ -1,0 +1,32 @@
+<div class="shop-container">
+  <div class="header text-center" style="margin-bottom: 30px;">
+    <h2>Tienda en Línea</h2>
+    <p>Explora nuestros productos disponibles</p>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card" *ngFor="let producto of productos">
+      <div class="product-info">
+        <h3>{{ producto.nombre }}</h3>
+        <span class="badge">{{ producto.categoria }}</span>
+        <p class="desc">{{ producto.descripcion || 'Sin descripción disponible.' }}</p>
+        <div class="price-stock">
+          <span class="price">${{ producto.precioVenta | number:'1.2-2' }}</span>
+          <span class="stock" [class.text-danger]="producto.existencias === 0">
+            Existencias: {{ producto.existencias }}
+          </span>
+        </div>
+      </div>
+      <button 
+        class="btn btn-primary btn-block" 
+        [disabled]="producto.existencias === 0"
+        (click)="comprar(producto)">
+        {{ producto.existencias > 0 ? 'Comprar ahora' : 'Agotado' }}
+      </button>
+    </div>
+    
+    <div *ngIf="productos.length === 0" class="text-center" style="grid-column: 1 / -1; padding: 40px;">
+      <p>No hay productos activos en este momento.</p>
+    </div>
+  </div>
+</div>

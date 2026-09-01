@@ -1,16 +1,14 @@
-<div class="container">
-  <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Sistema de Inventario - Actividad de Coworking</h1>
-  
-  <app-producto-form 
-    [productoEdicion]="productoEnEdicion" 
-    [codigosExistentes]="codigosExistentes"
-    (onSubmitProducto)="manejarSubmit($event)"
-    (onCancel)="cancelarEdicion()">
-  </app-producto-form>
-  
-  <app-producto-list 
-    [productos]="productos"
-    (onEdit)="iniciarEdicion($event)"
-    (onDelete)="eliminarProducto($event)">
-  </app-producto-list>
+<nav class="navbar" *ngIf="usuarioActual">
+  <div class="nav-brand">
+    <strong>Sistema de Inventario</strong>
+    <span class="role-badge">{{ usuarioActual.rol | uppercase }}</span>
+  </div>
+  <div class="nav-user">
+    <span>Hola, {{ usuarioActual.nombre }}</span>
+    <button class="btn btn-secondary btn-sm" (click)="logout()">Cerrar sesión</button>
+  </div>
+</nav>
+
+<div class="container main-content">
+  <router-outlet></router-outlet>
 </div>
