@@ -1,59 +1,44 @@
-# SistemaInventario
+# Registro de Productos e Inventario
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+Actividad de Coworking: Versión 3 (Formularios Reactivos en Angular).
 
-## Development server
+## Integrantes del Equipo
+- Integrante 1
+- Integrante 2
+- Integrante 3
+- Integrante 4 (Opcional)
 
-To start a local development server, run:
+## Descripción del Problema
+Una tienda necesita registrar sus productos y controlar las existencias disponibles. Esta aplicación permite validar los datos ingresados, calcular valores del inventario (como la ganancia por unidad y el valor total) e identificar de forma visual los productos con pocas existencias (stock bajo).
 
-```bash
-ng serve
-```
+## Instalación y Ejecución
+1. Clonar el repositorio.
+2. Ejecutar `pnpm install` o `npm install` para instalar las dependencias.
+3. Ejecutar `pnpm start` o `npm start` para iniciar el servidor de desarrollo.
+4. Navegar a `http://localhost:4200/`.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Distribución del Trabajo
+- **Coordinador/a:** Encargado de la distribución de tareas, administrar la rama `develop` y verificar los requisitos.
+- **Formulario:** Construcción del `FormGroup`, campos, mensajes y validaciones.
+- **Listado:** Implementación de la visualización, búsqueda, edición y eliminación de productos.
+- **Diseño y Pruebas:** Estilos, casos de prueba, README y evidencias.
 
-## Code scaffolding
+## Ramas Utilizadas (Git Flow)
+- `main`
+- `develop`
+- `feature/formulario`
+- `feature/listado`
+- `feature/estilos-pruebas`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Casos de Prueba Ejecutados
+- Enviar el formulario vacío (muestra errores de campos obligatorios).
+- Registrar precios negativos (valida que deben ser > 0).
+- Registrar precio de venta menor al precio de compra (valida la regla de negocio).
+- Ingresar existencias negativas (valida >= 0).
+- Repetir un código (muestra error de código duplicado).
+- Comprobar la alerta de stock mínimo (cambia color de fila o texto si existencias <= stock mínimo).
+- Verificar ganancia unitaria y valor total del inventario.
+- Buscar, filtrar, editar y eliminar productos exitosamente.
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Dificultades Encontradas
+(A completar por el equipo durante la presentación).
